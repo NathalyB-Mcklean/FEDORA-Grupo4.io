@@ -3,707 +3,1237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fedora Linux - Documentación Completa</title>
+    <title>Fedora Linux: Innovación y Código Abierto</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
+        body {
             box-sizing: border-box;
         }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #073763;
-            background: linear-gradient(135deg, #f5f9fc 0%, #e8f2f7 100%);
-            padding: 20px;
-            min-height: 100vh;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(7, 55, 99, 0.1);
-        }
-
-        h2 {
-            color: #073763;
-            font-size: 2.2em;
-            margin: 40px 0 20px;
-            padding-bottom: 15px;
-            border-bottom: 3px solid #0a5fa5;
+        
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             position: relative;
+            overflow: hidden;
         }
-
-        h2::before {
+        
+        .gradient-bg::before {
             content: '';
             position: absolute;
-            bottom: -3px;
+            top: 0;
             left: 0;
-            width: 80px;
-            height: 3px;
-            background: #51a6d8;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
         }
-
-        h3 {
-            color: #0a5fa5;
-            font-size: 1.6em;
-            margin: 30px 0 15px;
-            padding-left: 15px;
-            border-left: 4px solid #51a6d8;
+        
+        .content-shadow {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-
-        h4 {
-            color: #073763;
-            font-size: 1.3em;
-            margin: 20px 0 10px;
-            font-weight: 600;
+        
+        .content-shadow:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
-
-        p {
-            margin: 15px 0;
-            text-align: justify;
-            font-size: 1.05em;
-            line-height: 1.7;
-        }
-
-        ul {
-            margin: 20px 0 20px 30px;
-            list-style: none;
-        }
-
-        ul li {
-            margin: 12px 0;
-            padding-left: 25px;
-            position: relative;
-            line-height: 1.6;
-        }
-
-        ul li::before {
-            content: '▸';
-            color: #0a5fa5;
-            font-weight: bold;
-            position: absolute;
-            left: 0;
-            font-size: 1.2em;
-        }
-
-        table {
-            width: 100%;
-            margin: 30px 0;
-            border-collapse: collapse;
-            border-radius: 10px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(7, 55, 99, 0.1);
-        }
-
-        thead {
-            background: linear-gradient(135deg, #073763 0%, #0a5fa5 100%);
-            color: white;
-        }
-
-        th {
-            padding: 15px 12px;
-            text-align: left;
-            font-weight: 600;
-            font-size: 1em;
-        }
-
-        td {
-            padding: 12px 12px;
-            border-bottom: 1px solid #e8f2f7;
-        }
-
-        tbody tr {
-            background: white;
-            transition: all 0.3s ease;
-        }
-
-        tbody tr:hover {
-            background: #f5f9fc;
-        }
-
-        tbody tr:nth-child(even) {
-            background: #fafcfd;
-        }
-
-        tbody tr:nth-child(even):hover {
-            background: #f0f7fb;
-        }
-
-        .image-container {
-            text-align: center;
-            margin: 40px 0;
-            padding: 20px;
-            background: #f5f9fc;
-            border-radius: 15px;
-        }
-
-        .image-container img {
-            max-width: 100%;
-            height: auto;
-            border-radius: 10px;
-            box-shadow: 0 8px 25px rgba(7, 55, 99, 0.15);
-            transition: transform 0.3s ease;
-        }
-
-        .image-container img:hover {
-            transform: scale(1.02);
-        }
-
-        .image-caption {
-            margin-top: 15px;
-            font-weight: 600;
-            color: #073763;
-            font-size: 1.05em;
-        }
-
-        .image-source {
-            margin-top: 8px;
-            font-size: 0.9em;
-            color: #0a5fa5;
-            font-style: italic;
-        }
-
-        hr {
-            border: none;
+        
+        .section-divider {
+            background: linear-gradient(90deg, transparent, #667eea, transparent);
             height: 2px;
-            background: linear-gradient(to right, transparent, #51a6d8, transparent);
-            margin: 50px 0;
         }
-
-        .video-container {
-            text-align: center;
-            margin: 40px 0;
-            padding: 30px;
-            background: #f5f9fc;
-            border-radius: 15px;
-        }
-
-        iframe {
-            border-radius: 10px;
-            box-shadow: 0 8px 25px rgba(7, 55, 99, 0.15);
-            max-width: 100%;
-            height: auto;
-        }
-
-        .team-member {
-            display: inline-block;
-            margin: 20px 15px;
-            text-align: center;
-            padding: 20px;
-            background: #f5f9fc;
-            border-radius: 15px;
-            transition: all 0.3s ease;
-            vertical-align: top;
-            width: 200px;
-        }
-
-        .team-member:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 30px rgba(7, 55, 99, 0.15);
-        }
-
-        .team-member img {
-            border-radius: 50%;
-            border: 4px solid #51a6d8;
-            margin-bottom: 15px;
-            transition: border-color 0.3s ease;
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-        }
-
-        .team-member:hover img {
-            border-color: #0a5fa5;
-        }
-
-        .team-member b {
-            display: block;
-            color: #073763;
-            font-size: 1.2em;
-            margin-top: 10px;
-        }
-
-        .info-box {
-            background: linear-gradient(135deg, #e8f2f7 0%, #f5f9fc 100%);
-            padding: 25px;
-            border-radius: 12px;
-            border-left: 5px solid #0a5fa5;
-            margin: 25px 0;
-            box-shadow: 0 4px 15px rgba(7, 55, 99, 0.08);
-        }
-
-        .info-box ul {
-            margin: 10px 0 10px 20px;
-        }
-
-        .info-box ul li::before {
-            content: '●';
-            color: #0a5fa5;
-        }
-
-        a {
-            color: #0a5fa5;
-            text-decoration: none;
-            transition: color 0.3s ease;
-            border-bottom: 2px solid transparent;
-        }
-
-        a:hover {
-            color: #073763;
-            border-bottom: 2px solid #51a6d8;
-        }
-
-        strong, b {
-            color: #073763;
-            font-weight: 600;
-        }
-
-        .table-container {
+        
+        .comparison-table {
             overflow-x: auto;
-            margin: 30px 0;
-            border-radius: 10px;
-        }
-
-        /* Media Queries para Responsividad */
-        
-        /* Pantallas grandes (computadoras) */
-        @media (min-width: 1201px) {
-            .container {
-                max-width: 1200px;
-                padding: 50px;
-            }
-            
-            .team-member {
-                width: 220px;
-            }
         }
         
-        /* Pantallas medianas (computadoras pequeñas, tablets grandes) */
-        @media (min-width: 992px) and (max-width: 1200px) {
-            .container {
-                max-width: 960px;
-                padding: 40px;
-            }
-            
-            .team-member {
-                width: 200px;
-                margin: 15px 10px;
-            }
-            
-            table {
-                font-size: 0.95em;
-            }
+        .comparison-table table {
+            min-width: 600px;
         }
         
-        /* Tablets */
-        @media (min-width: 768px) and (max-width: 991px) {
-            .container {
-                padding: 30px;
-            }
-            
-            h2 {
-                font-size: 1.9em;
-            }
-            
-            h3 {
-                font-size: 1.5em;
-            }
-            
-            .team-member {
-                width: 180px;
-                margin: 15px 10px;
-            }
-            
-            table {
-                font-size: 0.9em;
-            }
-            
-            th, td {
-                padding: 10px 8px;
-            }
+        .fedora-blue {
+            color: #294172;
         }
         
-        /* Teléfonos grandes y tablets pequeñas */
-        @media (min-width: 576px) and (max-width: 767px) {
-            body {
-                padding: 10px;
-            }
-            
-            .container {
-                padding: 25px 20px;
-            }
-            
-            h2 {
-                font-size: 1.7em;
-            }
-            
-            h3 {
-                font-size: 1.4em;
-            }
-            
-            .team-member {
-                display: block;
-                width: 100%;
-                max-width: 280px;
-                margin: 15px auto;
-            }
-            
-            iframe {
-                height: 300px;
-            }
-            
-            table {
-                font-size: 0.85em;
-            }
-            
-            th, td {
-                padding: 8px 6px;
-            }
+        .fedora-light-blue {
+            background-color: #f0f4ff;
         }
         
-        /* Teléfonos pequeños */
-        @media (max-width: 575px) {
-            body {
-                padding: 5px;
-            }
-            
-            .container {
-                padding: 20px 15px;
-                border-radius: 15px;
-            }
-            
-            h2 {
-                font-size: 1.5em;
-            }
-            
-            h3 {
-                font-size: 1.3em;
-            }
-            
-            h4 {
-                font-size: 1.1em;
-            }
-            
-            p {
-                font-size: 1em;
-                text-align: left;
-            }
-            
-            .team-member {
-                display: block;
-                width: 100%;
-                max-width: 260px;
-                margin: 10px auto;
-                padding: 15px;
-            }
-            
-            .team-member img {
-                width: 120px;
-                height: 120px;
-            }
-            
-            iframe {
-                height: 250px;
-            }
-            
-            .info-box {
-                padding: 20px 15px;
-            }
-            
-            ul {
-                margin-left: 20px;
-            }
-            
-            ul li {
-                padding-left: 20px;
-            }
-            
-            table {
-                font-size: 0.8em;
-            }
-            
-            th, td {
-                padding: 6px 4px;
-                white-space: nowrap;
-            }
-            
-            .image-container, .video-container {
-                padding: 15px;
-                margin: 30px 0;
-            }
+        .floating-animation {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .tech-card {
+            background: linear-gradient(145deg, #f8fafc, #e2e8f0);
+            transition: all 0.3s ease;
+        }
+        
+        .tech-card:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .terminal-window {
+            background: #1a1a1a;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .terminal-header {
+            background: #2d2d2d;
+            padding: 10px 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .terminal-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+        
+        .dot-red { background: #ff5f56; }
+        .dot-yellow { background: #ffbd2e; }
+        .dot-green { background: #27ca3f; }
+        
+        .terminal-content {
+            padding: 20px;
+            color: #00ff00;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        
+        .stats-counter {
+            font-size: 2.5rem;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .interactive-card {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .interactive-card:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.15);
+        }
+        
+        .typing-animation {
+            overflow: hidden;
+            border-right: 2px solid #00ff00;
+            white-space: nowrap;
+            animation: typing 3s steps(40, end), blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            from { width: 0; }
+            to { width: 100%; }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent; }
+            50% { border-color: #00ff00; }
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <h2>Introducción</h2>
-        <p>Los sistemas operativos constituyen el componente fundamental que posibilita la interacción entre el hardware del computador y el usuario final. Fedora, como distribución líder de Linux, encarna los principios del software libre y código abierto, ofreciendo una plataforma robusta y confiable para desarrollo, investigación y uso cotidiano. Su naturaleza comunitaria, combinada con el respaldo corporativo de Red Hat, lo posiciona como una solución tecnológica tanto para entornos empresariales como personales.</p>
-
-        <p>La evolución constante de Fedora refleja un compromiso inquebrantable con la innovación tecnológica, sirviendo como banco de pruebas para características avanzadas que posteriormente se incorporarán en Red Hat Enterprise Linux. Esta sinergia única entre comunidad y corporación garantiza un equilibrio perfecto entre estabilidad probada y vanguardia tecnológica.</p>
-
-        <hr>
-
-        <h2>Reseña histórica</h2>
-        <p>Fedora emerge en el panorama del software libre en 2003 como el sucesor natural de Red Hat Linux, marcando el inicio de un proyecto comunitario con visión de futuro. Desde sus inicios como Fedora Core 1, esta distribución ha mantenido un ciclo de desarrollo constante, liberando nuevas versiones cada seis meses que incorporan las últimas innovaciones del ecosistema Linux.</p>
-
-        <p>A lo largo de su evolución, Fedora ha sido pionera en la adopción de tecnologías fundamentales. En 2015 introdujo el gestor de paquetes DNF, modernizando significativamente la gestión de software. Para 2020, Fedora 33 estableció Btrfs como sistema de archivos predeterminado, mejorando la confiabilidad y eficiencia del almacenamiento. Estos hitos tecnológicos demuestran el compromiso de Fedora con el progreso continuo y la excelencia técnica.</p>
-
-        <div class="image-container">
-            <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi_jL2u85uOIO5YTq7xD1b-smaqo5fWSaG6znBcwTHQbdbMsvYBaGhxiFD4cpLB-Q0l1VThyTG7_ITTgE-wbEZ-FfiHnXg3CIRZzvNy1I8VBHPvatwsmN9pNwUpNRr3_gD6ZiOew1czo3nsL-SmTEwqbaVqeHmQAmHI7DqrVFhlVFGSHfFAsAOPNfwJ-lM/s1920/fedora-feat-5b9fe676c9e77c0050ce388c.jpg" alt="Fedora Linux">
-            <div class="image-caption">Figura #1 - Fedora</div>
-            <div class="image-source">Fuente: https://www.lifewire.com/thmb/ftZ1L1jJdEj3e2zzHObw3988buU=/1920x1080/filters:fill(auto,1)/fedora-feat-5b9fe676c9e77c0050ce388c.jpg</div>
+<body class="bg-gray-50 font-sans">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-6 text-center">
+            <div class="flex items-center justify-center mb-6 relative z-10">
+                <div class="floating-animation mr-4">
+                    <svg class="w-20 h-20" viewBox="0 0 100 100" fill="currentColor">
+                        <defs>
+                            <linearGradient id="fedoraGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#e2e8f0;stop-opacity:1" />
+                            </linearGradient>
+                        </defs>
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="url(#fedoraGradient)" stroke-width="6"/>
+                        <path d="M30 35 L50 20 L70 35 L65 50 L50 65 L35 50 Z" fill="url(#fedoraGradient)"/>
+                        <circle cx="50" cy="42" r="8" fill="white"/>
+                        <circle cx="50" cy="42" r="4" fill="#667eea"/>
+                    </svg>
+                </div>
+                <div>
+                    <h1 class="text-6xl font-bold mb-2">Fedora Linux</h1>
+                    <div class="flex items-center justify-center space-x-2 text-sm opacity-80">
+                        <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full">v41</span>
+                        <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full">2024</span>
+                        <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full">Open Source</span>
+                    </div>
+                </div>
+            </div>
+            <p class="text-xl opacity-90 max-w-3xl mx-auto">
+                Innovación, Código Abierto y Excelencia Tecnológica
+            </p>
         </div>
+    </header>
 
-        <h2>Características</h2>
-        <h3>Arquitectura técnica</h3>
-        <p>Fedora se construye sobre una base técnica sólida que integra el kernel Linux más reciente con systemd como sistema de inicialización, proporcionando un entorno estable y eficiente. La inclusión de SELinux (Security-Enhanced Linux) habilitado por defecto establece un estándar de seguridad empresarial desde el primer momento. El entorno de escritorio GNOME Shell, combinado con el protocolo de display Wayland, ofrece una experiencia de usuario moderna y fluida.</p>
-
-        <p>La gestión de paquetes mediante DNF representa uno de los pilares fundamentales del sistema, permitiendo instalación, actualización y mantenimiento eficiente del software. Esta herramienta, compatible con paquetes RPM, asegura dependencias resueltas automáticamente y transacciones atómicas que preservan la integridad del sistema incluso en caso de interrupciones.</p>
-
-        <h3>Requerimientos del sistema</h3>
+    <!-- Main Content -->
+    <main class="container mx-auto px-6 py-12">
         
-        <h4>Requerimientos mínimos</h4>
-        <div class="info-box">
-            <ul>
-                <li><strong>Procesador:</strong> 1 GHz dual-core 64-bit</li>
-                <li><strong>Memoria RAM:</strong> 2 GB</li>
-                <li><strong>Almacenamiento:</strong> 15 GB espacio libre</li>
-                <li><strong>Tarjeta gráfica:</strong> Resolución 1024x768</li>
-                <li><strong>Medio de instalación:</strong> USB o DVD booteable</li>
-            </ul>
-        </div>
-
-        <h4>Requerimientos recomendados</h4>
-        <div class="info-box">
-            <ul>
-                <li><strong>Procesador:</strong> 2 GHz quad-core 64-bit</li>
-                <li><strong>Memoria RAM:</strong> 8 GB o más</li>
-                <li><strong>Almacenamiento:</strong> 40 GB SSD</li>
-                <li><strong>Tarjeta gráfica:</strong> Aceleración 3D, 1920x1080</li>
-                <li><strong>Conexión:</strong> Internet para actualizaciones</li>
-            </ul>
-        </div>
-
-        <h4>Para desarrollo profesional</h4>
-        <div class="info-box">
-            <ul>
-                <li><strong>Memoria RAM:</strong> 16 GB</li>
-                <li><strong>Almacenamiento:</strong> 100 GB SSD</li>
-                <li><strong>Conectividad:</strong> Internet de alta velocidad</li>
-                <li><strong>Gráficos:</strong> Tarjeta dedicada para desarrollo gráfico</li>
-            </ul>
-        </div>
-
-        <hr>
-
-        <h2>Análisis comparativo</h2>
-        <p>Esta comparación incluye diferentes categorías de sistemas operativos para proporcionar una perspectiva completa. Fedora y Ubuntu son distribuciones Linux, mientras que Windows y macOS representan sistemas operativos propietarios. Esta comparación multidimensional permite entender las ventajas y desventajas de cada enfoque en el ecosistema actual de computación.</p>
-
-        <div class="table-container">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Característica</th>
-                        <th>Fedora</th>
-                        <th>Ubuntu</th>
-                        <th>Windows 11</th>
-                        <th>macOS Sonoma</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td><strong>Tipo</strong></td>
-                        <td>Distribución Linux</td>
-                        <td>Distribución Linux</td>
-                        <td>Sistema Operativo</td>
-                        <td>Sistema Operativo</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Licencia</strong></td>
-                        <td>Open Source</td>
-                        <td>Open Source</td>
-                        <td>Propietario</td>
-                        <td>Propietario</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Costo</strong></td>
-                        <td>Gratuito</td>
-                        <td>Gratuito</td>
-                        <td>Pago</td>
-                        <td>Incluido con hardware</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Ciclo de lanzamiento</strong></td>
-                        <td>6 meses</td>
-                        <td>6 meses LTS/2 años</td>
-                        <td>Variable</td>
-                        <td>Anual</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Gestor de paquetes</strong></td>
-                        <td>DNF/RPM</td>
-                        <td>APT/DEB</td>
-                        <td>MSI/Winget</td>
-                        <td>Homebrew</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Entorno escritorio</strong></td>
-                        <td>GNOME</td>
-                        <td>GNOME</td>
-                        <td>Explorer</td>
-                        <td>Aqua</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Seguridad base</strong></td>
-                        <td>SELinux</td>
-                        <td>AppArmor</td>
-                        <td>Windows Defender</td>
-                        <td>SIP</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Curva de aprendizaje</strong></td>
-                        <td>Media</td>
-                        <td>Baja</td>
-                        <td>Baja</td>
-                        <td>Media</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Soporte hardware</strong></td>
-                        <td>Amplio</td>
-                        <td>Muy amplio</td>
-                        <td>Universal</td>
-                        <td>Exclusivo Apple</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Comunidad</strong></td>
-                        <td>Técnica/Activa</td>
-                        <td>Enorme</td>
-                        <td>Corporativa</td>
-                        <td>Limitada</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Innovación</strong></td>
-                        <td>Alta</td>
-                        <td>Media</td>
-                        <td>Media</td>
-                        <td>Alta</td>
-                    </tr>
-                    <tr>
-                        <td><strong>Estabilidad</strong></td>
-                        <td>Alta</td>
-                        <td>Muy alta</td>
-                        <td>Media</td>
-                        <td>Muy alta</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-
-        <h3>Fortalezas y debilidades</h3>
-        <p>Las principales fortalezas de Fedora radican en su acceso a tecnologías de vanguardia, seguridad empresarial integrada y comunidad técnica activa. Como plataforma de desarrollo, ofrece herramientas modernas como Podman para contenedores y Toolbox para entornos aislados. Su relación simbiótica con Red Hat Enterprise Linux asegura que las innovaciones probadas en Fedora eventualmente lleguen a entornos productivos empresariales.</p>
-
-        <p>Entre las limitaciones se encuentra una curva de aprendizaje moderada para usuarios noveles en Linux, soporte de hardware menos extenso que Ubuntu en algunos casos específicos, y la necesidad de mantenimiento más frecuente debido al ciclo de actualizaciones acelerado. Estas características posicionan a Fedora como ideal para usuarios técnicos pero menos adecuado para usuarios casuales sin experiencia previa en Linux.</p>
-
-        <div class="image-container">
-            <img src="https://www.somoslibres.org/images/2024/07/12/fedora41linux.webp" alt="Fedora Tux">
-            <div class="image-caption">Figura #2 - Tux</div>
-            <div class="image-source">Fuente: https://www.somoslibres.org/images/2024/07/12/fedora41linux.webp</div>
-        </div>
-
-        <h2>Casos de uso y aplicaciones prácticas</h2>
-        <h3>Escenarios de Implementación</h3>
-        <p>Fedora demuestra versatilidad excepcional en múltiples dominios tecnológicos. En desarrollo de software, proporciona un stack tecnológico completo con soporte nativo para lenguajes modernos como Python, Go, Rust y Node.js, junto con herramientas de desarrollo enterprise-grade. La integración de Flatpak y Toolbox facilita el manejo de dependencias y entornos aislados, crucial para proyectos complejos.</p>
-
-        <p>En el ámbito científico y académico, Fedora es la plataforma preferida para computación de alto rendimiento, análisis de datos e investigación. Instituciones como la NASA y el CERN emplean Fedora en simulaciones y análisis complejos, aprovechando su estabilidad, rendimiento y herramientas especializadas. La disponibilidad de paquetes científicos actualizados y soporte para hardware especializado lo hace ideal para estos entornos.</p>
-
-        <p>Para infraestructura cloud y servidores, Fedora Server ofrece una base sólida con soporte integrado para Kubernetes, Podman y tecnologías containerizadas. Su naturaleza innovadora lo convierte en la plataforma perfecta para evaluar y desarrollar soluciones cloud-native antes de su implementación en entornos productivos empresariales.</p>
-
-        <hr>
-
-        <h2>Proceso de Instalación y Configuración</h2>
-        
-        <div class="image-container">
-            <img src="https://blogger.googleusercontent.com/img/a/AVvXsEgK1zTuCC4yR9Y1pD1aWwLN_ndflYxRs4o43hhCvgLu04Bqt7-4ZfFHztbdn1Y0x2240vw38YrlqEiyg8LJR-lItF7-5hq6BwzH4UPxEPFIfV84rFUJc2GrZvJZUxiDxPuIUXo42a24X-rFKjtpvgFIQX6a8n7LUABNEn0YEohk7lkyoLGmKj_z2BUk86w" alt="Instalación de Fedora">
-            <div class="image-caption">Figura #3 - Instalación de Fedora</div>
-            <div class="image-source">Fuente: https://www.dedoimedo.com/computers/fedora-42-gnome.html</div>
-        </div>
-
-        <h3>Implementación del sistema</h3>
-        <p>La instalación de Fedora se caracteriza por su equilibrio entre simplicidad y control granular. El proceso inicia con la descarga de la imagen ISO desde el sitio oficial, seguido por la verificación de integridad mediante checksums criptográficos. La creación de medio booteable conduce al asistente de instalación Anaconda, que guía al usuario through configuración de idioma, particionamiento de disco y selección de software.</p>
-
-        <p>Post-instalación, Fedora requiere configuraciones adicionales para optimizar su funcionalidad. La habilitación de repositorios RPM Fusion expande significativamente el catálogo de software disponible, mientras que la instalación de codecs multimedia asegura compatibilidad con formatos de audio y video prevalentes. Para desarrolladores, la instalación de grupos de paquetes "Development Tools" y "Development Libraries" establece un entorno de programación completo listo para producción.</p>
-
-        <hr>
-
-        <h2>Video ilustrativo</h2>
-        <div class="video-container">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/u3jBw9ZOyTI" frameborder="0" allowfullscreen></iframe>
-            <p style="margin-top: 20px;"><strong>Video #1. Fedora Linux // Review y opinión</strong><br>
-            Fuente: YouTube, Tutos PC (2021)<br>
-            URL: https://www.youtube.com/watch?v=u3jBw9ZOyTI</p>
-        </div>
-
-        <h2>Recursos y referencias</h2>
-        <h3>Documentación y comunidad</h3>
-        <p>La documentación oficial de Fedora, disponible en múltiples idiomas, constituye el recurso principal para usuarios y administradores. Complementando la documentación formal, la Wiki comunitaria ofrece guías prácticas, soluciones a problemas comunes y mejores prácticas compiladas por usuarios experimentados. Los foros de soporte y listas de correo proporcionan asistencia en tiempo real para desafíos técnicos específicos.</p>
-
-        <p>Para desarrolladores, el Fedora Developer Portal centraliza recursos técnicos, tutoriales y guías de empaquetamiento. La infraestructura de construcción Koji y el sistema de control de código fuente permiten a los contribuidores participar activamente en el desarrollo de la distribución, reforzando el modelo comunitario que sustenta el proyecto.</p>
-
-        <hr>
-
-        <h2>Conclusiones</h2>
-        <p>Fedora se consolida como una distribución Linux de referencia que armoniza innovación disruptiva con estabilidad operacional. Su ciclo de desarrollo de seis meses garantiza acceso prioritario a las tecnologías más avanzadas, mientras que su relación simbiótica con Red Hat Enterprise Linux asegura calidad y confiabilidad empresarial. Esta dualidad única posiciona a Fedora como plataforma ideal para early adopters y entornos que requieren tecnologías cutting-edge.</p>
-
-        <p>El enfoque en seguridad proactiva mediante SELinux, combinado con herramientas modernas de containerización como Podman, establece estándares industriales que otras distribuciones eventualmente adoptan. Para desarrolladores, Fedora ofrece un ecosistema completo con soporte nativo para lenguajes de programación contemporáneos, frameworks de desarrollo y plataformas de deployment, acelerando significativamente el ciclo de desarrollo de aplicaciones.</p>
-
-        <p>La vitalidad de la comunidad Fedora, demostrada through contribuciones técnicas, mantenimiento de paquetes y soporte a usuarios, constituye el pilar fundamental del proyecto. Esta colaboración orgánica entre voluntarios globales y el soporte institucional de Red Hat crea un modelo sostenible que asegura la continuidad y relevancia futura de la distribución.</p>
-
-        <hr>
-
-        <h2>Integrantes del Grupo</h2>
-        <div style="text-align: center;">
-            <div class="team-member">
-                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgxKQRtu9NgqEbAuIGEHzoVICB_Q1N35RuDvgBp4eaZy7Sq9R-Edg-uy9i8sWGKQV4GFF2J38eG7cjcneoCh3BbukGOODp11tXw4_G66jQH8210JRo2lHDmLlqR3cO5wyUzvEyPC94yRDfaGWSvajbaERMbbaJJdt9UVExAUpDINn4clxFjq_9G821UORY/s320/Imagen%20de%20WhatsApp%202025-10-06%20a%20las%2021.59.13_092076fa.jpg" alt="Abdiel Abrego">
-                <b>Abdiel Abrego</b>
+        <!-- Introducción -->
+        <section class="bg-white rounded-lg content-shadow p-8 mb-12">
+            <h2 class="text-3xl font-bold fedora-blue mb-6">Introducción</h2>
+            
+            <!-- Estadísticas destacadas -->
+            <div class="grid md:grid-cols-4 gap-6 mb-8">
+                <div class="text-center p-4 bg-gradient-to-br from-blue-50 to-blue-100 rounded-lg">
+                    <div class="stats-counter">21</div>
+                    <p class="text-blue-700 font-semibold">Años de Historia</p>
+                    <p class="text-xs text-blue-600">Desde 2003</p>
+                </div>
+                <div class="text-center p-4 bg-gradient-to-br from-green-50 to-green-100 rounded-lg">
+                    <div class="stats-counter">6</div>
+                    <p class="text-green-700 font-semibold">Meses por Release</p>
+                    <p class="text-xs text-green-600">Ciclo predecible</p>
+                </div>
+                <div class="text-center p-4 bg-gradient-to-br from-purple-50 to-purple-100 rounded-lg">
+                    <div class="stats-counter">1M+</div>
+                    <p class="text-purple-700 font-semibold">Usuarios Activos</p>
+                    <p class="text-xs text-purple-600">Comunidad global</p>
+                </div>
+                <div class="text-center p-4 bg-gradient-to-br from-orange-50 to-orange-100 rounded-lg">
+                    <div class="stats-counter">100%</div>
+                    <p class="text-orange-700 font-semibold">Código Abierto</p>
+                    <p class="text-xs text-orange-600">Completamente libre</p>
+                </div>
             </div>
-            <div class="team-member">
-                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgSVk2cEnpeVt48BG-EUIMHSq2ge0cfKTiYcGlguxISQJPdw4_xcxPGGFYP8-94zwhVK1wQ5e3nQkt_e6lTU3drb-AitgsjA2REj9E7qIf-jrNR2AydjyVfmKM_3jPUWFdW3uiddl_ELnFeTHsQkMaA36LSJIECnsngG6efwUsuJXXi3abQe_t2qB3_x1s/w226-h282/Screenshot_20250927_215011_BeReal.jpg" alt="Nathaly Bonilla">
-                <b>Nathaly Bonilla</b>
+            
+            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                <p class="mb-6">
+                    Los sistemas operativos constituyen el componente fundamental que posibilita la interacción entre el hardware del computador y el usuario final. Fedora, como distribución líder de Linux, encarna los principios del software libre y código abierto, ofreciendo una plataforma robusta y confiable para desarrollo, investigación y uso cotidiano. Su naturaleza comunitaria, combinada con el respaldo corporativo de Red Hat, lo posiciona como una solución tecnológica tanto para entornos empresariales como personales.
+                </p>
+                <p>
+                    La evolución constante de Fedora refleja un compromiso inquebrantable con la innovación tecnológica, sirviendo como banco de pruebas para características avanzadas que posteriormente se incorporarán en Red Hat Enterprise Linux. Esta sinergia única entre comunidad y corporación garantiza un equilibrio perfecto entre estabilidad probada y vanguardia tecnológica.
+                </p>
             </div>
-            <div class="team-member">
-                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjgHrmX3YpcjBMrcD-mXyR-AGc5GefTZaJgScD_Sc2G5lpbNK7zu8iYbJmPZRXd5Jo8lMjdwLha98us2YbveJZgdIOj_HTap1gecJLcgsrOhYNdhNkRVkz6TAe0CUkc1rIks0dbuqvbMotUEAVs1kmnBjlqinbbUTHRspzoFXYKu5ervqVNVUmGbhwngk0/s320/eimy.jpg" alt="Eimy Félix">
-                <b>Eimy Félix</b>
-            </div>
-            <div class="team-member">
-                <img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhvpZV9byjhBMfPifqtg0J3VTZz3tXwZ6HXcIlTqFZVeZ7BfviSYwH4k7aJZ8cp8UV4lWnjRdrwgJN81JyuHvyi1sAu-TvhtOdaT3FPe5NkqcJwVTeWJBGxWfMgMHaE6OdbOqu66CjXp_olH0Pes2fRPR_Xmkx-xSQEfGgJePxojBJoSPFq08S6KvEUj_8/s320/amanda.jpg" alt="Amanda Green">
-                <b>Amanda Green</b>
-            </div>
-        </div>
+        </section>
 
-        <div class="info-box" style="margin-top: 40px;">
-            <p><strong>Profesor:</strong> Isaac Esquivel<br>
-            <strong>Institución:</strong> Universidad Tecnológica de Panamá<br>
-            <strong>Facultad:</strong> Ingeniería de Sistemas Computacionales<br>
-            <strong>Departamento:</strong> Arquitectura y Redes de Computadoras<br>
-            <strong>Grupo:</strong> 1SF132 - 4</p>
-        </div>
+        <!-- Reseña Histórica -->
+        <section class="bg-white rounded-lg content-shadow p-8 mb-12">
+            <h2 class="text-3xl font-bold fedora-blue mb-6">Reseña Histórica</h2>
+            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                <p class="mb-6">
+                    Fedora emerge en el panorama del software libre en 2003 como el sucesor natural de Red Hat Linux, marcando el inicio de un proyecto comunitario con visión de futuro. Desde sus inicios como Fedora Core 1, esta distribución ha mantenido un ciclo de desarrollo constante, liberando nuevas versiones cada seis meses que incorporan las últimas innovaciones del ecosistema Linux.
+                </p>
+                <p class="mb-8">
+                    A lo largo de su evolución, Fedora ha sido pionera en la adopción de tecnologías fundamentales. En 2015 introdujo el gestor de paquetes DNF, modernizando significativamente la gestión de software. Para 2020, Fedora 33 estableció Btrfs como sistema de archivos predeterminado, mejorando la confiabilidad y eficiencia del almacenamiento. Estos hitos tecnológicos demuestran el compromiso de Fedora con el progreso continuo y la excelencia técnica.
+                </p>
+                
+                <!-- Línea de tiempo interactiva -->
+                <div class="bg-gradient-to-br from-gray-50 to-gray-100 rounded-lg p-8 mb-8">
+                    <h3 class="text-2xl font-semibold fedora-blue mb-6 text-center">Línea de Tiempo de Fedora</h3>
+                    <div class="relative">
+                        <div class="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-blue-500 to-purple-500"></div>
+                        
+                        <div class="space-y-8">
+                            <div class="flex items-center">
+                                <div class="flex-1 text-right pr-8">
+                                    <div class="bg-white p-4 rounded-lg shadow-md interactive-card">
+                                        <h4 class="font-bold text-blue-600">2003</h4>
+                                        <p class="text-sm text-gray-700">Lanzamiento de Fedora Core 1</p>
+                                    </div>
+                                </div>
+                                <div class="w-4 h-4 bg-blue-500 rounded-full border-4 border-white shadow-lg z-10"></div>
+                                <div class="flex-1 pl-8"></div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="flex-1 pr-8"></div>
+                                <div class="w-4 h-4 bg-green-500 rounded-full border-4 border-white shadow-lg z-10"></div>
+                                <div class="flex-1 text-left pl-8">
+                                    <div class="bg-white p-4 rounded-lg shadow-md interactive-card">
+                                        <h4 class="font-bold text-green-600">2015</h4>
+                                        <p class="text-sm text-gray-700">Introducción del gestor DNF</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="flex-1 text-right pr-8">
+                                    <div class="bg-white p-4 rounded-lg shadow-md interactive-card">
+                                        <h4 class="font-bold text-purple-600">2020</h4>
+                                        <p class="text-sm text-gray-700">Btrfs como sistema de archivos por defecto</p>
+                                    </div>
+                                </div>
+                                <div class="w-4 h-4 bg-purple-500 rounded-full border-4 border-white shadow-lg z-10"></div>
+                                <div class="flex-1 pl-8"></div>
+                            </div>
+                            
+                            <div class="flex items-center">
+                                <div class="flex-1 pr-8"></div>
+                                <div class="w-4 h-4 bg-orange-500 rounded-full border-4 border-white shadow-lg z-10"></div>
+                                <div class="flex-1 text-left pl-8">
+                                    <div class="bg-white p-4 rounded-lg shadow-md interactive-card">
+                                        <h4 class="font-bold text-orange-600">2024</h4>
+                                        <p class="text-sm text-gray-700">Fedora 41 con mejoras en IA y contenedores</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Imagen -->
+                <div class="bg-gray-100 rounded-lg p-6 text-center">
+                    <img src="https://www.lifewire.com/thmb/ftZ1L1jJdEj3e2zzHObw3988buU=/1920x1080/filters:fill(auto,1)/fedora-feat-5b9fe676c9e77c0050ce388c.jpg" 
+                         alt="Fedora Linux Desktop Environment" 
+                         class="w-full max-w-4xl mx-auto rounded-lg shadow-lg"
+                         onerror="this.src=''; this.alt='Imagen de Fedora no disponible'; this.style.display='none';">
+                    <p class="text-sm text-gray-600 mt-4 italic">
+                        <strong>Figura #1 - Fedora Desktop Environment</strong><br>
+                        Fuente: Lifewire - https://www.lifewire.com/thmb/ftZ1L1jJdEj3e2zzHObw3988buU=/1920x1080/filters:fill(auto,1)/fedora-feat-5b9fe676c9e77c0050ce388c.jpg
+                    </p>
+                </div>
+            </div>
+        </section>
 
-        <h2>Referencias Bibliográficas</h2>
-        <ul>
-            <li>Fedora Project. (2024). <em>Fedora Documentation</em>. Recuperado de <a href="https://docs.fedoraproject.org/">https://docs.fedoraproject.org</a></li>
-            <li>Ubuntu Documentation Team. (2024). <em>Ubuntu 24.04 LTS Documentation</em>. Canonical Ltd.</li>
-            <li>Microsoft Corporation. (2024). <em>Windows 11 Technical Specifications</em>. Recuperado de <a href="https://www.microsoft.com/windows/windows-11-specifications">https://www.microsoft.com/windows/windows-11-specifications</a></li>
-            <li>Linux Foundation. (2025). <em>Linux Kernel Development Report</em>. Recuperado de <a href="https://www.linuxfoundation.org">https://www.linuxfoundation.org</a></li>
-            <li>Timetoast. (n.d.). Línea de tiempo de Fedora. Recuperado de <a href="https://www.timetoast.com/timelines/linea-de-tiempo-de-fedora">https://www.timetoast.com/timelines/linea-de-tiempo-de-fedora</a></li>
-            <li>Slant. (2025). Fedora vs macOS: Comparación detallada a partir de 2025. Recuperado de <a href="https://www.slant.co/versus/2688/11499/~fedora_vs_macos">https://www.slant.co/versus/2688/11499/~fedora_vs_macos</a></li>
-            <li>WindowsForum. (2025). Por qué Fedora es el mejor reemplazo de Windows en 2025: 7 razones clave. Recuperado de <a href="https://windowsforum.com/threads/why-fedora-is-the-best-windows-replacement-in-2025-7-key-reasons.365573/">https://windowsforum.com/threads/why-fedora-is-the-best-windows-replacement-in-2025-7-key-reasons.365573/</a></li>
-            <li>Dedoimedo. (2025). <em>Fedora Workstation 42 review – Strangely good and bad</em>. Recuperado de <a href="https://www.dedoimedo.com/computers/fedora-42-gnome.html">https://www.dedoimedo.com/computers/fedora-42-gnome.html</a></li>
-        </ul>
-    </div>
-</body>
+        <!-- Características -->
+        <section class="bg-white rounded-lg content-shadow p-8 mb-12">
+            <h2 class="text-3xl font-bold fedora-blue mb-6">Características</h2>
+            
+            <h3 class="text-2xl font-semibold fedora-blue mb-4">Arquitectura Técnica y Características</h3>
+            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed mb-8">
+                <p class="mb-6">
+                    Fedora se construye sobre una base técnica sólida que integra el kernel Linux más reciente con systemd como sistema de inicialización, proporcionando un entorno estable y eficiente. La inclusión de SELinux (Security-Enhanced Linux) habilitado por defecto establece un estándar de seguridad empresarial desde el primer momento. El entorno de escritorio GNOME Shell, combinado con el protocolo de display Wayland, ofrece una experiencia de usuario moderna y fluida.
+                </p>
+                <p>
+                    La gestión de paquetes mediante DNF representa uno de los pilares fundamentales del sistema, permitiendo instalación, actualización y mantenimiento eficiente del software. Esta herramienta, compatible con paquetes RPM, asegura dependencias resueltas automáticamente y transacciones atómicas que preservan la integridad del sistema incluso en caso de interrupciones.
+                </p>
+            </div>
+
+            <!-- Terminal interactivo -->
+            <div class="mb-8">
+                <div class="terminal-window">
+                    <div class="terminal-header">
+                        <div class="terminal-dot dot-red"></div>
+                        <div class="terminal-dot dot-yellow"></div>
+                        <div class="terminal-dot dot-green"></div>
+                        <span class="text-gray-400 ml-4 text-sm">fedora@localhost:~$</span>
+                    </div>
+                    <div class="terminal-content">
+                        <div class="mb-2">$ dnf info fedora-release</div>
+                        <div class="text-blue-400 mb-2">Name         : fedora-release</div>
+                        <div class="text-blue-400 mb-2">Version      : 41</div>
+                        <div class="text-blue-400 mb-2">Architecture : noarch</div>
+                        <div class="text-green-400 mb-4">Summary      : Fedora release files</div>
+                        <div class="mb-2">$ systemctl status firewalld</div>
+                        <div class="text-green-400">● firewalld.service - firewalld - dynamic firewall daemon</div>
+                        <div class="text-green-400 mb-4">   Active: active (running)</div>
+                        <div class="typing-animation">$ sudo dnf update && echo "Sistema actualizado!"</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Características destacadas -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                <div class="tech-card p-6 rounded-lg">
+                    <div class="flex items-center mb-3">
+                        <div class="w-12 h-12 bg-gradient-to-br from-red-500 to-red-600 rounded-lg flex items-center justify-center mr-3">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-semibold fedora-blue">SELinux</h4>
+                    </div>
+                    <p class="text-gray-700 text-sm mb-3">Seguridad avanzada habilitada por defecto</p>
+                    <div class="bg-red-50 p-2 rounded text-xs text-red-700">
+                        <strong>Nivel:</strong> Enforcing | <strong>Políticas:</strong> 200,000+
+                    </div>
+                </div>
+                
+                <div class="tech-card p-6 rounded-lg">
+                    <div class="flex items-center mb-3">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mr-3">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-semibold fedora-blue">GNOME Shell</h4>
+                    </div>
+                    <p class="text-gray-700 text-sm mb-3">Entorno de escritorio moderno y intuitivo</p>
+                    <div class="bg-blue-50 p-2 rounded text-xs text-blue-700">
+                        <strong>Versión:</strong> 47.x | <strong>Wayland:</strong> Por defecto
+                    </div>
+                </div>
+                
+                <div class="tech-card p-6 rounded-lg">
+                    <div class="flex items-center mb-3">
+                        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center mr-3">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-semibold fedora-blue">DNF Package Manager</h4>
+                    </div>
+                    <p class="text-gray-700 text-sm mb-3">Gestión avanzada de paquetes RPM</p>
+                    <div class="bg-green-50 p-2 rounded text-xs text-green-700">
+                        <strong>Paquetes:</strong> 50,000+ | <strong>Repos:</strong> Oficiales + RPM Fusion
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Requerimientos del Sistema -->
+        <section class="bg-white rounded-lg content-shadow p-8 mb-12">
+            <h2 class="text-3xl font-bold fedora-blue mb-6">Requerimientos del Sistema</h2>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Mínimos -->
+                <div class="border-2 border-gray-200 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold fedora-blue mb-4 flex items-center">
+                        <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Requerimientos Mínimos
+                    </h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li><strong>Procesador:</strong> 1 GHz dual-core 64-bit</li>
+                        <li><strong>Memoria RAM:</strong> 2 GB</li>
+                        <li><strong>Almacenamiento:</strong> 15 GB espacio libre</li>
+                        <li><strong>Tarjeta gráfica:</strong> Resolución 1024x768</li>
+                        <li><strong>Medio de instalación:</strong> USB o DVD booteable</li>
+                    </ul>
+                </div>
+
+                <!-- Recomendados -->
+                <div class="border-2 border-blue-300 rounded-lg p-6 bg-blue-50">
+                    <h3 class="text-xl font-semibold fedora-blue mb-4 flex items-center">
+                        <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z"/>
+                        </svg>
+                        Recomendados
+                    </h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li><strong>Procesador:</strong> 2 GHz quad-core 64-bit</li>
+                        <li><strong>Memoria RAM:</strong> 8 GB o más</li>
+                        <li><strong>Almacenamiento:</strong> 40 GB SSD</li>
+                        <li><strong>Tarjeta gráfica:</strong> Aceleración 3D, 1920x1080</li>
+                        <li><strong>Conexión:</strong> Internet para actualizaciones</li>
+                    </ul>
+                </div>
+
+                <!-- Desarrollo Profesional -->
+                <div class="border-2 border-purple-300 rounded-lg p-6 bg-purple-50">
+                    <h3 class="text-xl font-semibold fedora-blue mb-4 flex items-center">
+                        <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                        </svg>
+                        Desarrollo Profesional
+                    </h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li><strong>Memoria RAM:</strong> 16 GB</li>
+                        <li><strong>Almacenamiento:</strong> 100 GB SSD</li>
+                        <li><strong>Conectividad:</strong> Internet de alta velocidad</li>
+                        <li><strong>Gráficos:</strong> Tarjeta dedicada para desarrollo gráfico</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Análisis Comparativo -->
+        <section class="bg-white rounded-lg content-shadow p-8 mb-12">
+            <h2 class="text-3xl font-bold fedora-blue mb-6">Análisis Comparativo</h2>
+            <p class="text-gray-700 mb-6 leading-relaxed">
+                Esta comparación incluye diferentes categorías de sistemas operativos para proporcionar una perspectiva completa. Fedora y Ubuntu son distribuciones Linux, mientras que Windows y macOS representan sistemas operativos propietarios. Esta comparación multidimensional permite entender las ventajas y desventajas de cada enfoque en el ecosistema actual de computación.
+            </p>
+            
+            <div class="comparison-table">
+                <table class="w-full border-collapse border border-gray-300 rounded-lg overflow-hidden">
+                    <thead>
+                        <tr class="gradient-bg text-white">
+                            <th class="border border-gray-300 p-4 text-left font-semibold">Característica</th>
+                            <th class="border border-gray-300 p-4 text-left font-semibold">Fedora</th>
+                            <th class="border border-gray-300 p-4 text-left font-semibold">Ubuntu</th>
+                            <th class="border border-gray-300 p-4 text-left font-semibold">Windows 11</th>
+                            <th class="border border-gray-300 p-4 text-left font-semibold">macOS Sonoma</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 p-4 font-medium">Tipo</td>
+                            <td class="border border-gray-300 p-4">Distribución Linux</td>
+                            <td class="border border-gray-300 p-4">Distribución Linux</td>
+                            <td class="border border-gray-300 p-4">Sistema Operativo</td>
+                            <td class="border border-gray-300 p-4">Sistema Operativo</td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="border border-gray-300 p-4 font-medium">Licencia</td>
+                            <td class="border border-gray-300 p-4 text-green-600 font-semibold">Open Source</td>
+                            <td class="border border-gray-300 p-4 text-green-600 font-semibold">Open Source</td>
+                            <td class="border border-gray-300 p-4 text-red-600">Propietario</td>
+                            <td class="border border-gray-300 p-4 text-red-600">Propietario</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 p-4 font-medium">Costo</td>
+                            <td class="border border-gray-300 p-4 text-green-600 font-semibold">Gratuito</td>
+                            <td class="border border-gray-300 p-4 text-green-600 font-semibold">Gratuito</td>
+                            <td class="border border-gray-300 p-4 text-red-600">Pago</td>
+                            <td class="border border-gray-300 p-4 text-orange-600">Incluido con hardware</td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="border border-gray-300 p-4 font-medium">Ciclo de lanzamiento</td>
+                            <td class="border border-gray-300 p-4">6 meses</td>
+                            <td class="border border-gray-300 p-4">6 meses LTS/2 años</td>
+                            <td class="border border-gray-300 p-4">Variable</td>
+                            <td class="border border-gray-300 p-4">Anual</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 p-4 font-medium">Gestor de paquetes</td>
+                            <td class="border border-gray-300 p-4 text-blue-600 font-semibold">DNF/RPM</td>
+                            <td class="border border-gray-300 p-4">APT/DEB</td>
+                            <td class="border border-gray-300 p-4">MSI/Winget</td>
+                            <td class="border border-gray-300 p-4">Homebrew</td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="border border-gray-300 p-4 font-medium">Entorno escritorio</td>
+                            <td class="border border-gray-300 p-4 text-blue-600 font-semibold">GNOME</td>
+                            <td class="border border-gray-300 p-4">GNOME</td>
+                            <td class="border border-gray-300 p-4">Explorer</td>
+                            <td class="border border-gray-300 p-4">Aqua</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 p-4 font-medium">Seguridad base</td>
+                            <td class="border border-gray-300 p-4 text-green-600 font-semibold">SELinux</td>
+                            <td class="border border-gray-300 p-4">AppArmor</td>
+                            <td class="border border-gray-300 p-4">Windows Defender</td>
+                            <td class="border border-gray-300 p-4">SIP</td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="border border-gray-300 p-4 font-medium">Curva de aprendizaje</td>
+                            <td class="border border-gray-300 p-4 text-yellow-600">Media</td>
+                            <td class="border border-gray-300 p-4 text-green-600">Baja</td>
+                            <td class="border border-gray-300 p-4 text-green-600">Baja</td>
+                            <td class="border border-gray-300 p-4 text-yellow-600">Media</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 p-4 font-medium">Soporte hardware</td>
+                            <td class="border border-gray-300 p-4 text-blue-600">Amplio</td>
+                            <td class="border border-gray-300 p-4 text-green-600 font-semibold">Muy amplio</td>
+                            <td class="border border-gray-300 p-4 text-green-600 font-semibold">Universal</td>
+                            <td class="border border-gray-300 p-4 text-red-600">Exclusivo Apple</td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="border border-gray-300 p-4 font-medium">Comunidad</td>
+                            <td class="border border-gray-300 p-4 text-blue-600 font-semibold">Técnica/Activa</td>
+                            <td class="border border-gray-300 p-4 text-green-600 font-semibold">Enorme</td>
+                            <td class="border border-gray-300 p-4">Corporativa</td>
+                            <td class="border border-gray-300 p-4 text-orange-600">Limitada</td>
+                        </tr>
+                        <tr class="bg-gray-50">
+                            <td class="border border-gray-300 p-4 font-medium">Innovación</td>
+                            <td class="border border-gray-300 p-4 text-green-600 font-semibold">Alta</td>
+                            <td class="border border-gray-300 p-4 text-yellow-600">Media</td>
+                            <td class="border border-gray-300 p-4 text-yellow-600">Media</td>
+                            <td class="border border-gray-300 p-4 text-green-600 font-semibold">Alta</td>
+                        </tr>
+                        <tr class="bg-white">
+                            <td class="border border-gray-300 p-4 font-medium">Estabilidad</td>
+                            <td class="border border-gray-300 p-4 text-green-600 font-semibold">Alta</td>
+                            <td class="border border-gray-300 p-4 text-green-600 font-semibold">Muy alta</td>
+                            <td class="border border-gray-300 p-4 text-yellow-600">Media</td>
+                            <td class="border border-gray-300 p-4 text-green-600 font-semibold">Muy alta</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Fortalezas y Debilidades -->
+        <section class="bg-white rounded-lg content-shadow p-8 mb-12">
+            <h2 class="text-3xl font-bold fedora-blue mb-6">Fortalezas y Debilidades</h2>
+            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed mb-8">
+                <p class="mb-6">
+                    Las principales fortalezas de Fedora radican en su acceso a tecnologías de vanguardia, seguridad empresarial integrada y comunidad técnica activa. Como plataforma de desarrollo, ofrece herramientas modernas como Podman para contenedores y Toolbox para entornos aislados. Su relación simbiótica con Red Hat Enterprise Linux asegura que las innovaciones probadas en Fedora eventualmente lleguen a entornos productivos empresariales.
+                </p>
+                <p class="mb-6">
+                    Entre las limitaciones se encuentra una curva de aprendizaje moderada para usuarios noveles en Linux, soporte de hardware menos extenso que Ubuntu en algunos casos específicos, y la necesidad de mantenimiento más frecuente debido al ciclo de actualizaciones acelerado. Estas características posicionan a Fedora como ideal para usuarios técnicos pero menos adecuado para usuarios casuales sin experiencia previa en Linux.
+                </p>
+                
+                <!-- Infografía de Arquitectura -->
+                <div class="bg-gradient-to-br from-gray-50 to-blue-50 rounded-lg p-8 mb-8">
+                    <h3 class="text-2xl font-semibold fedora-blue mb-6 text-center">Arquitectura del Sistema Fedora</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <!-- Capa de Usuario -->
+                        <div class="bg-white rounded-lg p-6 shadow-lg">
+                            <div class="text-center mb-4">
+                                <div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                                    </svg>
+                                </div>
+                                <h4 class="font-bold text-blue-600">Capa de Usuario</h4>
+                            </div>
+                            <ul class="text-sm text-gray-700 space-y-2">
+                                <li>• GNOME Shell</li>
+                                <li>• Aplicaciones Flatpak</li>
+                                <li>• Firefox, LibreOffice</li>
+                                <li>• Herramientas de desarrollo</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Capa del Sistema -->
+                        <div class="bg-white rounded-lg p-6 shadow-lg">
+                            <div class="text-center mb-4">
+                                <div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                                    </svg>
+                                </div>
+                                <h4 class="font-bold text-green-600">Capa del Sistema</h4>
+                            </div>
+                            <ul class="text-sm text-gray-700 space-y-2">
+                                <li>• systemd</li>
+                                <li>• DNF Package Manager</li>
+                                <li>• SELinux</li>
+                                <li>• Firewalld</li>
+                            </ul>
+                        </div>
+                        
+                        <!-- Kernel -->
+                        <div class="bg-white rounded-lg p-6 shadow-lg">
+                            <div class="text-center mb-4">
+                                <div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-full flex items-center justify-center mx-auto mb-3">
+                                    <svg class="w-8 h-8 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M9 12a1 1 0 01-.117-1.993L9 10h2a1 1 0 01.117 1.993L11 12H9zm-4 0a1 1 0 01-.117-1.993L5 10h2a1 1 0 01.117 1.993L7 12H5zm8 0a1 1 0 01-.117-1.993L13 10h2a1 1 0 01.117 1.993L15 12h-2z"/>
+                                    </svg>
+                                </div>
+                                <h4 class="font-bold text-purple-600">Kernel Linux</h4>
+                            </div>
+                            <ul class="text-sm text-gray-700 space-y-2">
+                                <li>• Kernel 6.11+</li>
+                                <li>• Drivers de hardware</li>
+                                <li>• Sistema de archivos Btrfs</li>
+                                <li>• Gestión de memoria</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Imagen Tux -->
+                <div class="bg-gray-100 rounded-lg p-6 text-center">
+                    <img src="https://www.somoslibres.org/images/2024/07/12/fedora41linux.webp" 
+                         alt="Fedora 41 Linux Tux Mascot" 
+                         class="w-full max-w-2xl mx-auto rounded-lg shadow-lg"
+                         onerror="this.src=''; this.alt='Imagen de Tux Fedora no disponible'; this.style.display='none';">
+                    <p class="text-sm text-gray-600 mt-4 italic">
+                        <strong>Figura #2 - Fedora 41 con Tux (Mascota de Linux)</strong><br>
+                        Fuente: Somos Libres - https://www.somoslibres.org/images/2024/07/12/fedora41linux.webp
+                    </p>
+                </div>
+            </div>
+
+            <!-- Fortalezas y Debilidades en tarjetas -->
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Fortalezas -->
+                <div class="bg-green-50 border-l-4 border-green-500 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold text-green-800 mb-4 flex items-center">
+                        <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Fortalezas
+                    </h3>
+                    <ul class="space-y-2 text-green-700">
+                        <li>• Tecnologías de vanguardia</li>
+                        <li>• Seguridad empresarial (SELinux)</li>
+                        <li>• Comunidad técnica activa</li>
+                        <li>• Herramientas modernas (Podman, Toolbox)</li>
+                        <li>• Respaldo de Red Hat</li>
+                        <li>• Innovación constante</li>
+                        <li>• Completamente gratuito</li>
+                    </ul>
+                </div>
+
+                <!-- Debilidades -->
+                <div class="bg-orange-50 border-l-4 border-orange-500 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold text-orange-800 mb-4 flex items-center">
+                        <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M12 9v3.75m-9.303 3.376c-.866 1.5.217 3.374 1.948 3.374h14.71c1.73 0 2.813-1.874 1.948-3.374L13.949 3.378c-.866-1.5-3.032-1.5-3.898 0L2.697 16.126zM12 15.75h.007v.008H12v-.008z"/>
+                        </svg>
+                        Limitaciones
+                    </h3>
+                    <ul class="space-y-2 text-orange-700">
+                        <li>• Curva de aprendizaje moderada</li>
+                        <li>• Soporte hardware menos extenso</li>
+                        <li>• Mantenimiento más frecuente</li>
+                        <li>• Menos adecuado para usuarios casuales</li>
+                        <li>• Ciclo de actualizaciones acelerado</li>
+                        <li>• Requiere conocimientos técnicos</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Proceso de Instalación -->
+        <section class="bg-white rounded-lg content-shadow p-8 mb-12">
+            <h2 class="text-3xl font-bold fedora-blue mb-6">Proceso de Instalación y Configuración</h2>
+            
+            <h3 class="text-2xl font-semibold fedora-blue mb-4">Implementación del sistema</h3>
+            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed mb-8">
+                <p class="mb-6">
+                    La instalación de Fedora se caracteriza por su equilibrio entre simplicidad y control granular. El proceso inicia con la descarga de la imagen ISO desde el sitio oficial, seguido por la verificación de integridad mediante checksums criptográficos. La creación de medio booteable conduce al asistente de instalación Anaconda, que guía al usuario through configuración de idioma, particionamiento de disco y selección de software.
+                </p>
+                <p class="mb-8">
+                    Post-instalación, Fedora requiere configuraciones adicionales para optimizar su funcionalidad. La habilitación de repositorios RPM Fusion expande significativamente el catálogo de software disponible, mientras que la instalación de codecs multimedia asegura compatibilidad con formatos de audio y video prevalentes. Para desarrolladores, la instalación de grupos de paquetes "Development Tools" y "Development Libraries" establece un entorno de programación completo listo para producción.
+                </p>
+                
+                <!-- Video ilustrativo -->
+                <div class="bg-gray-100 rounded-lg p-6 text-center">
+                    <div class="bg-gray-800 rounded-lg p-8 text-white">
+                        <svg class="w-16 h-16 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M2 6a2 2 0 012-2h6l2 2h6a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"/>
+                        </svg>
+                        <h4 class="text-xl font-semibold mb-2">Video ilustrativo</h4>
+                        <p class="text-gray-300 mb-4">Fedora Linux // Review y opinión</p>
+                        <a href="https://www.youtube.com/watch?v=u3jBw9ZOyTI" 
+                           target="_blank" 
+                           rel="noopener noreferrer"
+                           class="inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
+                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
+                            </svg>
+                            Ver en YouTube
+                        </a>
+                    </div>
+                    <p class="text-sm text-gray-600 mt-4 italic">
+                        <strong>Video #1. Fedora Linux // Review y opinión</strong><br>
+                        Fuente: YouTube, Tutos PC (2021)<br>
+                        URL: https://www.youtube.com/watch?v=u3jBw9ZOyTI
+                    </p>
+                </div>
+            </div>
+
+            <!-- Simulador de instalación interactivo -->
+            <div class="bg-gray-900 rounded-lg p-6 mb-8">
+                <h3 class="text-xl font-semibold text-white mb-4 flex items-center">
+                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    Simulador de Instalación Anaconda
+                </h3>
+                <div class="bg-blue-900 rounded p-4 text-white font-mono text-sm">
+                    <div class="mb-2">🔄 Iniciando Anaconda Installer...</div>
+                    <div class="mb-2">✅ Detectando hardware: Intel/AMD x86_64</div>
+                    <div class="mb-2">✅ Memoria RAM: 8 GB detectados</div>
+                    <div class="mb-2">✅ Disco duro: 500 GB disponibles</div>
+                    <div class="mb-2">🌐 Configurando red: DHCP automático</div>
+                    <div class="mb-2">📦 Descargando paquetes base...</div>
+                    <div class="mb-2">
+                        <div class="flex items-center">
+                            <span class="mr-2">Progreso:</span>
+                            <div class="flex-1 bg-gray-700 rounded-full h-2">
+                                <div class="bg-green-500 h-2 rounded-full" style="width: 75%"></div>
+                            </div>
+                            <span class="ml-2">75%</span>
+                        </div>
+                    </div>
+                    <div class="text-green-400">⏱️ Tiempo estimado: 15 minutos restantes</div>
+                </div>
+            </div>
+
+            <!-- Pasos de instalación -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="interactive-card bg-blue-50 p-6 rounded-lg text-center">
+                    <div class="w-12 h-12 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-bold">1</div>
+                    <h4 class="font-semibold text-blue-800 mb-2">Descarga ISO</h4>
+                    <p class="text-sm text-blue-700 mb-3">Verificación de checksums criptográficos</p>
+                    <div class="text-xs bg-blue-100 p-2 rounded">
+                        <strong>Tamaño:</strong> ~2.1 GB<br>
+                        <strong>SHA256:</strong> Verificado ✓
+                    </div>
+                </div>
+                
+                <div class="interactive-card bg-green-50 p-6 rounded-lg text-center">
+                    <div class="w-12 h-12 bg-green-600 text-white rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-bold">2</div>
+                    <h4 class="font-semibold text-green-800 mb-2">Medio Booteable</h4>
+                    <p class="text-sm text-green-700 mb-3">Creación de USB o DVD de instalación</p>
+                    <div class="text-xs bg-green-100 p-2 rounded">
+                        <strong>Herramientas:</strong> Rufus, dd<br>
+                        <strong>USB:</strong> Mín. 4 GB
+                    </div>
+                </div>
+                
+                <div class="interactive-card bg-purple-50 p-6 rounded-lg text-center">
+                    <div class="w-12 h-12 bg-purple-600 text-white rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-bold">3</div>
+                    <h4 class="font-semibold text-purple-800 mb-2">Anaconda</h4>
+                    <p class="text-sm text-purple-700 mb-3">Asistente de instalación guiado</p>
+                    <div class="text-xs bg-purple-100 p-2 rounded">
+                        <strong>Idioma:</strong> 100+ idiomas<br>
+                        <strong>Particionado:</strong> Automático/Manual
+                    </div>
+                </div>
+                
+                <div class="interactive-card bg-orange-50 p-6 rounded-lg text-center">
+                    <div class="w-12 h-12 bg-orange-600 text-white rounded-full flex items-center justify-center mx-auto mb-3 text-xl font-bold">4</div>
+                    <h4 class="font-semibold text-orange-800 mb-2">Post-instalación</h4>
+                    <p class="text-sm text-orange-700 mb-3">RPM Fusion y codecs multimedia</p>
+                    <div class="text-xs bg-orange-100 p-2 rounded">
+                        <strong>Repos:</strong> RPM Fusion<br>
+                        <strong>Codecs:</strong> H.264, MP3, etc.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Casos de Uso -->
+        <section class="bg-white rounded-lg content-shadow p-8 mb-12">
+            <h2 class="text-3xl font-bold fedora-blue mb-6">Casos de Uso y Aplicaciones Prácticas</h2>
+            
+            <h3 class="text-2xl font-semibold fedora-blue mb-4">Escenarios de Implementación</h3>
+            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed mb-8">
+                <p class="mb-6">
+                    Fedora demuestra versatilidad excepcional en múltiples dominios tecnológicos. En desarrollo de software, proporciona un stack tecnológico completo con soporte nativo para lenguajes modernos como Python, Go, Rust y Node.js, junto con herramientas de desarrollo enterprise-grade. La integración de Flatpak y Toolbox facilita el manejo de dependencias y entornos aislados, crucial para proyectos complejos.
+                </p>
+                <p class="mb-6">
+                    En el ámbito científico y académico, Fedora es la plataforma preferida para computación de alto rendimiento, análisis de datos e investigación. Instituciones como la NASA y el CERN emplean Fedora en simulaciones y análisis complejos, aprovechando su estabilidad, rendimiento y herramientas especializadas. La disponibilidad de paquetes científicos actualizados y soporte para hardware especializado lo hace ideal para estos entornos.
+                </p>
+                <p>
+                    Para infraestructura cloud y servidores, Fedora Server ofrece una base sólida con soporte integrado para Kubernetes, Podman y tecnologías containerizadas. Su naturaleza innovadora lo convierte en la plataforma perfecta para evaluar y desarrollar soluciones cloud-native antes de su implementación en entornos productivos empresariales.
+                </p>
+            </div>
+
+            <!-- Casos de uso en tarjetas -->
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="bg-blue-50 p-6 rounded-lg border border-blue-200">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-8 h-8 text-blue-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                        </svg>
+                        <h4 class="font-semibold text-blue-800">Desarrollo de Software</h4>
+                    </div>
+                    <ul class="text-sm text-blue-700 space-y-1">
+                        <li>• Stack tecnológico completo</li>
+                        <li>• Python, Go, Rust, Node.js</li>
+                        <li>• Herramientas enterprise-grade</li>
+                        <li>• Flatpak y Toolbox</li>
+                    </ul>
+                </div>
+
+                <div class="bg-green-50 p-6 rounded-lg border border-green-200">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-8 h-8 text-green-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12a1 1 0 01-.117-1.993L9 10h2a1 1 0 01.117 1.993L11 12H9zm-4 0a1 1 0 01-.117-1.993L5 10h2a1 1 0 01.117 1.993L7 12H5zm8 0a1 1 0 01-.117-1.993L13 10h2a1 1 0 01.117 1.993L15 12h-2z"/>
+                        </svg>
+                        <h4 class="font-semibold text-green-800">Investigación Científica</h4>
+                    </div>
+                    <ul class="text-sm text-green-700 space-y-1">
+                        <li>• Computación de alto rendimiento</li>
+                        <li>• Análisis de datos</li>
+                        <li>• Usado por NASA y CERN</li>
+                        <li>• Paquetes científicos actualizados</li>
+                    </ul>
+                </div>
+
+                <div class="bg-purple-50 p-6 rounded-lg border border-purple-200">
+                    <div class="flex items-center mb-4">
+                        <svg class="w-8 h-8 text-purple-600 mr-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                        </svg>
+                        <h4 class="font-semibold text-purple-800">Infraestructura Cloud</h4>
+                    </div>
+                    <ul class="text-sm text-purple-700 space-y-1">
+                        <li>• Fedora Server</li>
+                        <li>• Kubernetes integrado</li>
+                        <li>• Podman y contenedores</li>
+                        <li>• Soluciones cloud-native</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Recursos y Referencias -->
+        <section class="bg-white rounded-lg content-shadow p-8 mb-12">
+            <h2 class="text-3xl font-bold fedora-blue mb-6">Recursos y Referencias</h2>
+            
+            <h3 class="text-2xl font-semibold fedora-blue mb-4">Documentación y comunidad</h3>
+            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed mb-8">
+                <p class="mb-6">
+                    La documentación oficial de Fedora, disponible en múltiples idiomas, constituye el recurso principal para usuarios y administradores. Complementando la documentación formal, la Wiki comunitaria ofrece guías prácticas, soluciones a problemas comunes y mejores prácticas compiladas por usuarios experimentados. Los foros de soporte y listas de correo proporcionan asistencia en tiempo real para desafíos técnicos específicos.
+                </p>
+                <p>
+                    Para desarrolladores, el Fedora Developer Portal centraliza recursos técnicos, tutoriales y guías de empaquetamiento. La infraestructura de construcción Koji y el sistema de control de código fuente permiten a los contribuidores participar activamente en el desarrollo de la distribución, reforzando el modelo comunitario que sustenta el proyecto.
+                </p>
+            </div>
+
+            <!-- Galería de capturas de pantalla -->
+            <div class="mb-8">
+                <h3 class="text-2xl font-semibold fedora-blue mb-6 text-center">Galería Visual de Fedora</h3>
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden interactive-card">
+                        <div class="h-32 bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center">
+                            <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4z"/>
+                            </svg>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold text-gray-800 mb-2">GNOME Desktop</h4>
+                            <p class="text-sm text-gray-600">Escritorio moderno con Activities Overview</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden interactive-card">
+                        <div class="h-32 bg-gradient-to-br from-green-500 to-teal-600 flex items-center justify-center">
+                            <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M3 4a1 1 0 011-1h12a1 1 0 011 1v2a1 1 0 01-1 1H4a1 1 0 01-1-1V4zM3 10a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H4a1 1 0 01-1-1v-6zM14 9a1 1 0 00-1 1v6a1 1 0 001 1h2a1 1 0 001-1v-6a1 1 0 00-1-1h-2z"/>
+                            </svg>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold text-gray-800 mb-2">Terminal & DNF</h4>
+                            <p class="text-sm text-gray-600">Gestión de paquetes desde línea de comandos</p>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg shadow-lg overflow-hidden interactive-card">
+                        <div class="h-32 bg-gradient-to-br from-purple-500 to-pink-600 flex items-center justify-center">
+                            <svg class="w-16 h-16 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <div class="p-4">
+                            <h4 class="font-semibold text-gray-800 mb-2">Software Center</h4>
+                            <p class="text-sm text-gray-600">Instalación gráfica de aplicaciones</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Enlaces de recursos -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow interactive-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-lg flex items-center justify-center mr-3">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-semibold text-gray-800">Documentación Oficial</h4>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">Guías completas y manuales técnicos en múltiples idiomas</p>
+                    <a href="https://docs.fedoraproject.org/" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="inline-flex items-center text-blue-600 hover:text-blue-800 text-sm font-medium">
+                        docs.fedoraproject.org
+                        <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow interactive-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-green-500 to-green-600 rounded-lg flex items-center justify-center mr-3">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-semibold text-gray-800">Wiki Comunitaria</h4>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">Soluciones prácticas y mejores prácticas de la comunidad</p>
+                    <a href="https://fedoraproject.org/wiki/" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="inline-flex items-center text-green-600 hover:text-green-800 text-sm font-medium">
+                        fedoraproject.org/wiki
+                        <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+                        </svg>
+                    </a>
+                </div>
+
+                <div class="border border-gray-200 rounded-lg p-6 hover:shadow-lg transition-shadow interactive-card">
+                    <div class="flex items-center mb-4">
+                        <div class="w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-lg flex items-center justify-center mr-3">
+                            <svg class="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3z"/>
+                            </svg>
+                        </div>
+                        <h4 class="font-semibold text-gray-800">Developer Portal</h4>
+                    </div>
+                    <p class="text-gray-600 text-sm mb-4">Recursos técnicos y guías para desarrolladores</p>
+                    <a href="https://developer.fedoraproject.org/" 
+                       target="_blank" 
+                       rel="noopener noreferrer"
+                       class="inline-flex items-center text-purple-600 hover:text-purple-800 text-sm font-medium">
+                        developer.fedoraproject.org
+                        <svg class="w-4 h-4 ml-1" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M11 3a1 1 0 100 2h2.586l-6.293 6.293a1 1 0 101.414 1.414L15 6.414V9a1 1 0 102 0V4a1 1 0 00-1-1h-5z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusiones -->
+        <section class="bg-white rounded-lg content-shadow p-8 mb-12">
+            <h2 class="text-3xl font-bold fedora-blue mb-6">Conclusiones</h2>
+            <div class="prose prose-lg max-w-none text-gray-700 leading-relaxed">
+                <p class="mb-6">
+                    Fedora se consolida como una distribución Linux de referencia que armoniza innovación disruptiva con estabilidad operacional. Su ciclo de desarrollo de seis meses garantiza acceso prioritario a las tecnologías más avanzadas, mientras que su relación simbiótica con Red Hat Enterprise Linux asegura calidad y confiabilidad empresarial. Esta dualidad única posiciona a Fedora como plataforma ideal para early adopters y entornos que requieren tecnologías cutting-edge.
+                </p>
+                <p class="mb-6">
+                    El enfoque en seguridad proactiva mediante SELinux, combinado con herramientas modernas de containerización como Podman, establece estándares industriales que otras distribuciones eventualmente adoptan. Para desarrolladores, Fedora ofrece un ecosistema completo con soporte nativo para lenguajes de programación contemporáneos, frameworks de desarrollo y plataformas de deployment, acelerando significativamente el ciclo de desarrollo de aplicaciones.
+                </p>
+                <p>
+                    La vitalidad de la comunidad Fedora, demostrada through contribuciones técnicas, mantenimiento de paquetes y soporte a usuarios, constituye el pilar fundamental del proyecto. Esta colaboración orgánica entre voluntarios globales y el soporte institucional de Red Hat crea un modelo sostenible que asegura la continuidad y relevancia futura de la distribución.
+                </p>
+            </div>
+
+            <!-- Puntos clave de conclusión -->
+            <div class="mt-8 bg-gradient-to-r from-blue-50 to-purple-50 rounded-lg p-6">
+                <h3 class="text-xl font-semibold fedora-blue mb-4">Puntos Clave</h3>
+                <div class="grid md:grid-cols-3 gap-4">
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 text-blue-600 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <div>
+                            <h4 class="font-semibold text-gray-800 text-sm">Innovación Constante</h4>
+                            <p class="text-gray-600 text-xs">Tecnologías de vanguardia cada 6 meses</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 text-green-600 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <div>
+                            <h4 class="font-semibold text-gray-800 text-sm">Seguridad Empresarial</h4>
+                            <p class="text-gray-600 text-xs">SELinux y estándares industriales</p>
+                        </div>
+                    </div>
+                    
+                    <div class="flex items-start">
+                        <svg class="w-6 h-6 text-purple-600 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <div>
+                            <h4 class="font-semibold text-gray-800 text-sm">Comunidad Activa</h4>
+                            <p class="text-gray-600 text-xs">Colaboración global y sostenible</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Integrantes del Grupo -->
+        <section class="bg-white rounded-lg content-shadow p-8 mb-12">
+            <h2 class="text-3xl font-bold fedora-blue mb-6 text-center">Integrantes del Grupo</h2>
+            
+            <!-- Miembros del equipo -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                <div class="bg-blue-50 p-6 rounded-lg text-center border border-blue-200">
+                    <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-blue-800 text-lg">Abdiel Abrego</h3>
+                    <p class="text-blue-600 text-sm">Estudiante</p>
+                </div>
+
+                <div class="bg-green-50 p-6 rounded-lg text-center border border-green-200">
+                    <div class="w-16 h-16 bg-green-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-green-800 text-lg">Nathaly Bonilla</h3>
+                    <p class="text-green-600 text-sm">Estudiante</p>
+                </div>
+
+                <div class="bg-purple-50 p-6 rounded-lg text-center border border-purple-200">
+                    <div class="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-purple-800 text-lg">Eimy Félix</h3>
+                    <p class="text-purple-600 text-sm">Estudiante</p>
+                </div>
+
+                <div class="bg-orange-50 p-6 rounded-lg text-center border border-orange-200">
+                    <div class="w-16 h-16 bg-orange-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
+                        </svg>
+                    </div>
+                    <h3 class="font-semibold text-orange-800 text-lg">Amanda Green</h3>
+                    <p class="text-orange-600 text-sm">Estudiante</p>
+                </div>
+            </div>
+
+            <!-- Información académica -->
+            <div class="bg-gray-50 rounded-lg p-6">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="font-semibold fedora-blue mb-3 flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+                            </svg>
+                            Información Académica
+                        </h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><strong>Profesor:</strong> Isaac Esquivel</li>
+                            <li><strong>Institución:</strong> Universidad Tecnológica de Panamá</li>
+                            <li><strong>Facultad:</strong> Ingeniería de Sistemas Computacionales</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="font-semibold fedora-blue mb-3 flex items-center">
+                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
+                                <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/>
+                            </svg>
+                            Detalles del Proyecto
+                        </h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><strong>Departamento:</strong> Arquitectura y Redes de Computadoras</li>
+                            <li><strong>Grupo:</strong> 4 – Fedora</li>
+                            <li><strong>Año:</strong> 2024</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Referencias Bibliográficas -->
+        <section class="bg-white rounded-lg content-shadow p-8 mb-12">
+            <h2 class="text-3xl font-bold fedora-blue mb-6">Referencias Bibliográficas</h2>
+            
+            <div class="space-y-4">
+                <div class="border-l-4 border-blue-500 pl-4 py-2">
+                    <div class="flex items-start">
+                        <svg class="w-5 h-5 text-blue-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <p class="text-gray-700">
+                            Fedora Project. (2024). <em>Fedora Documentation</em>. Recuperado de 
+                            <a href="https://docs.fedoraproject.org" target="_blank" rel="noopener noreferrer" class="text-blue-600 hover:text-blue-800 underline">
+                                https://docs.fedoraproject.org
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="border-l-4 border-green-500 pl-4 py-2">
+                    <div class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M12 2l3.09 6.26L22 9l-5 4.87L18.18 21 12 17.77 5.82 21 7 13.87 2 9l6.91-.74L12 2z"/>
+                        </svg>
+                        <p class="text-gray-700">
+                            Ubuntu Documentation Team. (2024). <em>Ubuntu 24.04 LTS Documentation</em>. Canonical Ltd.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="border-l-4 border-purple-500 pl-4 py-2">
+                    <div class="flex items-start">
+                        <svg class="w-5 h-5 text-purple-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M4 3a2 2 0 00-2 2v10a2 2 0 002 2h12a2 2 0 002-2V5a2 2 0 00-2-2H4z"/>
+                        </svg>
+                        <p class="text-gray-700">
+                            Microsoft Corporation. (2024). <em>Windows 11 Technical Specifications</em>. Recuperado de 
+                            <a href="https://www.microsoft.com/windows/windows-11-specifications" target="_blank" rel="noopener noreferrer" class="text-purple-600 hover:text-purple-800 underline">
+                                https://www.microsoft.com/windows/windows-11-specifications
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="border-l-4 border-orange-500 pl-4 py-2">
+                    <div class="flex items-start">
+                        <svg class="w-5 h-5 text-orange-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <p class="text-gray-700">
+                            Linux Foundation. (2025). <em>Linux Kernel Development Report</em>. Recuperado de 
+                            <a href="https://www.linuxfoundation.org" target="_blank" rel="noopener noreferrer" class="text-orange-600 hover:text-orange-800 underline">
+                                https://www.linuxfoundation.org
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="border-l-4 border-red-500 pl-4 py-2">
+                    <div class="flex items-start">
+                        <svg class="w-5 h-5 text-red-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M12 2l3.09 6.26L22 9l-5 4.87L18.18 21 12 17.77 5.82 21 7 13.87 2 9l6.91-.74L12 2z"/>
+                        </svg>
+                        <p class="text-gray-700">
+                            Timetoast. (n.d.). <em>Línea de tiempo de Fedora</em>. Recuperado de 
+                            <a href="https://www.timetoast.com/timelines/linea-de-tiempo-de-fedora" target="_blank" rel="noopener noreferrer" class="text-red-600 hover:text-red-800 underline">
+                                https://www.timetoast.com/timelines/linea-de-tiempo-de-fedora
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="border-l-4 border-indigo-500 pl-4 py-2">
+                    <div class="flex items-start">
+                        <svg class="w-5 h-5 text-indigo-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        <p class="text-gray-700">
+                            Slant. (2025). <em>Fedora vs macOS: Comparación detallada a partir de 2025</em>. Recuperado el 7 de octubre de 2025, de 
+                            <a href="https://www.slant.co/versus/2688/11499/~fedora_vs_macos" target="_blank" rel="noopener noreferrer" class="text-indigo-600 hover:text-indigo-800 underline">
+                                https://www.slant.co/versus/2688/11499/~fedora_vs_macos
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <div class="border-l-4 border-teal-500 pl-4 py-2">
+                    <div class="flex items-start">
+                        <svg class="w-5 h-5 text-teal-500 mr-2 mt-1 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z"/>
+                        </svg>
+                        <p class="text-gray-700">
+                            WindowsForum. (2025, 10 de mayo). <em>Por qué Fedora es el mejor reemplazo de Windows en 2025: 7 razones clave</em>. Recuperado de 
+                            <a href="https://windowsforum.com/threads/why-fedora-is-the-best-windows-replacement-in-2025-7-key-reasons.365573/" target="_blank" rel="noopener noreferrer" class="text-teal-600 hover:text-teal-800 underline">
+                                https://windowsforum.com/threads/why-fedora-is-the-best-windows-replacement-in-2025-7-key-reasons.365573/
+                            </a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Conclusión -->
+        <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-8 text-center">
+            <h2 class="text-3xl font-bold mb-4">¿Por qué elegir Fedora?</h2>
+            <p class="text-lg opacity-90 max-w-3xl mx-auto mb-6">
+                Fedora representa la perfecta combinación entre innovación tecnológica y estabilidad empresarial. Su compromiso con el código abierto, la seguridad avanzada y las últimas tecnologías lo convierten en la elección ideal para desarrolladores, investigadores y usuarios que buscan lo mejor del ecosistema Linux.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm">🔒 Seguridad Avanzada</span>
+                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm">🚀 Tecnología de Vanguardia</span>
+                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm">🆓 Completamente Gratuito</span>
+                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm">👥 Comunidad Activa</span>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8 mt-16">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-gray-400">
+                © 2024 Blog sobre Fedora Linux. Contenido educativo sobre sistemas operativos de código abierto.
+            </p>
+        </div>
+    </footer>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98b18ee3d6327485',t:'MTc1OTg4MzcyNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
