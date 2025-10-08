@@ -1,30 +1,17 @@
-<!DOCTYPE html>
+</html><!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Fedora Linux: Innovación y Código Abierto</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
             box-sizing: border-box;
-        }
-        
-        .gradient-bg {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .gradient-bg::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grid" width="10" height="10" patternUnits="userSpaceOnUse"><path d="M 10 0 L 0 0 0 10" fill="none" stroke="rgba(255,255,255,0.1)" stroke-width="0.5"/></pattern></defs><rect width="100" height="100" fill="url(%23grid)"/></svg>');
-            opacity: 0.3;
         }
         
         .content-shadow {
@@ -37,25 +24,8 @@
             box-shadow: 0 15px 35px rgba(0,0,0,0.15);
         }
         
-        .section-divider {
-            background: linear-gradient(90deg, transparent, #667eea, transparent);
-            height: 2px;
-        }
-        
-        .comparison-table {
-            overflow-x: auto;
-        }
-        
-        .comparison-table table {
-            min-width: 600px;
-        }
-        
         .fedora-blue {
-            color: #294172;
-        }
-        
-        .fedora-light-blue {
-            background-color: #f0f4ff;
+            color: #0B57A4;
         }
         
         .floating-animation {
@@ -113,7 +83,7 @@
         .stats-counter {
             font-size: 2.5rem;
             font-weight: bold;
-            background: linear-gradient(135deg, #667eea, #764ba2);
+            background: linear-gradient(135deg, #0B57A4, #3c8ce7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
@@ -145,39 +115,54 @@
             from, to { border-color: transparent; }
             50% { border-color: #00ff00; }
         }
+
+        #scrollTop {
+            transition: opacity 0.3s, transform 0.3s;
+        }
+
+        #scrollTop:hover {
+            transform: scale(1.1);
+        }
     </style>
 </head>
-<body class="bg-gray-50 font-sans">
-    <!-- Header -->
-    <header class="gradient-bg text-white py-16">
-        <div class="container mx-auto px-6 text-center">
-            <div class="flex items-center justify-center mb-6 relative z-10">
-                <div class="floating-animation mr-4">
-                    <svg class="w-20 h-20" viewBox="0 0 100 100" fill="currentColor">
-                        <defs>
-                            <linearGradient id="fedoraGradient" x1="0%" y1="0%" x2="100%" y2="100%">
-                                <stop offset="0%" style="stop-color:#ffffff;stop-opacity:1" />
-                                <stop offset="100%" style="stop-color:#e2e8f0;stop-opacity:1" />
-                            </linearGradient>
-                        </defs>
-                        <circle cx="50" cy="50" r="45" fill="none" stroke="url(#fedoraGradient)" stroke-width="6"/>
-                        <path d="M30 35 L50 20 L70 35 L65 50 L50 65 L35 50 Z" fill="url(#fedoraGradient)"/>
-                        <circle cx="50" cy="42" r="8" fill="white"/>
-                        <circle cx="50" cy="42" r="4" fill="#667eea"/>
+<body class="bg-gray-50">
+    <!-- Header Mejorado -->
+    <header class="relative overflow-hidden">
+        <!-- Fondo con colores oficiales de Fedora -->
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-700 via-blue-800 to-blue-900"></div>
+        
+        <!-- Patrón de fondo -->
+        <div class="absolute inset-0 opacity-10" style="background-image: url('data:image/svg+xml,<svg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"><path d="M54.627 0l.83.828-1.415 1.415L51.8 0h2.827zM5.373 0l-.83.828L5.96 2.243 8.2 0H5.374zM48.97 0l3.657 3.657-1.414 1.414L46.143 0h2.828zM11.03 0L7.372 3.657 8.787 5.07 13.857 0H11.03zm32.284 0L49.8 6.485 48.384 7.9l-7.9-7.9h2.83zM16.686 0L10.2 6.485 11.616 7.9l7.9-7.9h-2.83z" fill="%23ffffff" fill-opacity="0.4" fill-rule="evenodd"/></svg>');"></div>
+        
+        <div class="container mx-auto px-6 py-16 relative z-10 text-white">
+            <div class="flex items-center justify-center mb-6">
+                <!-- Logo de Fedora -->
+                <div class="floating-animation mr-6">
+                    <svg class="w-24 h-24" viewBox="0 0 100 100" fill="currentColor">
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="white" stroke-width="6"/>
+                        <path d="M30 35 L50 20 L70 35 L65 50 L50 65 L35 50 Z" fill="white"/>
+                        <circle cx="50" cy="42" r="8" fill="#0B57A4"/>
                     </svg>
                 </div>
-                <div>
-                    <h1 class="text-6xl font-bold mb-2">Fedora Linux</h1>
-                    <div class="flex items-center justify-center space-x-2 text-sm opacity-80">
-                        <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full">v41</span>
-                        <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full">2024</span>
-                        <span class="bg-white bg-opacity-20 px-3 py-1 rounded-full">Open Source</span>
+                <div class="text-center">
+                    <h1 class="text-6xl md:text-7xl font-bold mb-3 tracking-tight">Fedora Linux</h1>
+                    <div class="flex flex-wrap items-center justify-center gap-2 text-sm">
+                        <span class="bg-white bg-opacity-20 backdrop-blur-sm px-4 py-1.5 rounded-full font-medium">v41</span>
+                        <span class="bg-white bg-opacity-20 backdrop-blur-sm px-4 py-1.5 rounded-full font-medium">2024</span>
+                        <span class="bg-white bg-opacity-20 backdrop-blur-sm px-4 py-1.5 rounded-full font-medium">Open Source</span>
                     </div>
                 </div>
             </div>
-            <p class="text-xl opacity-90 max-w-3xl mx-auto">
+            <p class="text-xl md:text-2xl opacity-95 max-w-3xl mx-auto text-center font-light">
                 Innovación, Código Abierto y Excelencia Tecnológica
             </p>
+        </div>
+        
+        <!-- Wave separator -->
+        <div class="absolute bottom-0 left-0 right-0">
+            <svg viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M0 120L60 105C120 90 240 60 360 45C480 30 600 30 720 37.5C840 45 960 60 1080 67.5C1200 75 1320 75 1380 75L1440 75V120H1380C1320 120 1200 120 1080 120C960 120 840 120 720 120C600 120 480 120 360 120C240 120 120 120 60 120H0Z" fill="#F9FAFB"/>
+            </svg>
         </div>
     </header>
 
@@ -295,7 +280,7 @@
                          onerror="this.src=''; this.alt='Imagen de Fedora no disponible'; this.style.display='none';">
                     <p class="text-sm text-gray-600 mt-4 italic">
                         <strong>Figura #1 - Fedora Desktop Environment</strong><br>
-                        Fuente: Lifewire - https://www.lifewire.com/thmb/ftZ1L1jJdEj3e2zzHObw3988buU=/1920x1080/filters:fill(auto,1)/fedora-feat-5b9fe676c9e77c0050ce388c.jpg
+                        Fuente: Lifewire
                     </p>
                 </div>
             </div>
@@ -451,10 +436,10 @@
                 Esta comparación incluye diferentes categorías de sistemas operativos para proporcionar una perspectiva completa. Fedora y Ubuntu son distribuciones Linux, mientras que Windows y macOS representan sistemas operativos propietarios. Esta comparación multidimensional permite entender las ventajas y desventajas de cada enfoque en el ecosistema actual de computación.
             </p>
             
-            <div class="comparison-table">
+            <div class="overflow-x-auto">
                 <table class="w-full border-collapse border border-gray-300 rounded-lg overflow-hidden">
                     <thead>
-                        <tr class="gradient-bg text-white">
+                        <tr class="bg-gradient-to-r from-blue-700 to-blue-800 text-white">
                             <th class="border border-gray-300 p-4 text-left font-semibold">Característica</th>
                             <th class="border border-gray-300 p-4 text-left font-semibold">Fedora</th>
                             <th class="border border-gray-300 p-4 text-left font-semibold">Ubuntu</th>
@@ -631,7 +616,7 @@
                          onerror="this.src=''; this.alt='Imagen de Tux Fedora no disponible'; this.style.display='none';">
                     <p class="text-sm text-gray-600 mt-4 italic">
                         <strong>Figura #2 - Fedora 41 con Tux (Mascota de Linux)</strong><br>
-                        Fuente: Somos Libres - https://www.somoslibres.org/images/2024/07/12/fedora41linux.webp
+                        Fuente: Somos Libres
                     </p>
                 </div>
             </div>
@@ -690,60 +675,26 @@
                     Post-instalación, Fedora requiere configuraciones adicionales para optimizar su funcionalidad. La habilitación de repositorios RPM Fusion expande significativamente el catálogo de software disponible, mientras que la instalación de codecs multimedia asegura compatibilidad con formatos de audio y video prevalentes. Para desarrolladores, la instalación de grupos de paquetes "Development Tools" y "Development Libraries" establece un entorno de programación completo listo para producción.
                 </p>
                 
-                <!-- Video ilustrativo -->
-                <div class="bg-gray-100 rounded-lg p-6 text-center">
-                    <div class="bg-gray-800 rounded-lg p-8 text-white">
-                        <svg class="w-16 h-16 mx-auto mb-4" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M2 6a2 2 0 012-2h6l2 2h6a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V6zM14.553 7.106A1 1 0 0014 8v4a1 1 0 00.553.894l2 1A1 1 0 0018 13V7a1 1 0 00-1.447-.894l-2 1z"/>
-                        </svg>
-                        <h4 class="text-xl font-semibold mb-2">Video ilustrativo</h4>
-                        <p class="text-gray-300 mb-4">Fedora Linux // Review y opinión</p>
-                        <a href="https://www.youtube.com/watch?v=u3jBw9ZOyTI" 
-                           target="_blank" 
-                           rel="noopener noreferrer"
-                           class="inline-flex items-center px-6 py-3 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors">
-                            <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                                <path d="M10 12a2 2 0 100-4 2 2 0 000 4z"/>
-                                <path fill-rule="evenodd" d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z" clip-rule="evenodd"/>
-                            </svg>
-                            Ver en YouTube
-                        </a>
+                <!-- Video Embed de YouTube -->
+                <div class="bg-gray-100 rounded-lg p-6 mb-8">
+                    <div class="aspect-w-16 aspect-h-9 rounded-lg overflow-hidden shadow-lg">
+                        <iframe 
+                            class="w-full h-96 rounded-lg"
+                            src="https://www.youtube.com/embed/u3jBw9ZOyTI" 
+                            title="Fedora Linux Review" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                        </iframe>
                     </div>
-                    <p class="text-sm text-gray-600 mt-4 italic">
+                    <p class="text-sm text-gray-600 mt-4 italic text-center">
                         <strong>Video #1. Fedora Linux // Review y opinión</strong><br>
-                        Fuente: YouTube, Tutos PC (2021)<br>
-                        URL: https://www.youtube.com/watch?v=u3jBw9ZOyTI
+                        Fuente: YouTube, Tutos PC (2021)
                     </p>
                 </div>
             </div>
 
-            <!-- Simulador de instalación interactivo -->
-            <div class="bg-gray-900 rounded-lg p-6 mb-8">
-                <h3 class="text-xl font-semibold text-white mb-4 flex items-center">
-                    <svg class="w-6 h-6 mr-2" fill="currentColor" viewBox="0 0 20 20">
-                        <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                    </svg>
-                    Simulador de Instalación Anaconda
-                </h3>
-                <div class="bg-blue-900 rounded p-4 text-white font-mono text-sm">
-                    <div class="mb-2">🔄 Iniciando Anaconda Installer...</div>
-                    <div class="mb-2">✅ Detectando hardware: Intel/AMD x86_64</div>
-                    <div class="mb-2">✅ Memoria RAM: 8 GB detectados</div>
-                    <div class="mb-2">✅ Disco duro: 500 GB disponibles</div>
-                    <div class="mb-2">🌐 Configurando red: DHCP automático</div>
-                    <div class="mb-2">📦 Descargando paquetes base...</div>
-                    <div class="mb-2">
-                        <div class="flex items-center">
-                            <span class="mr-2">Progreso:</span>
-                            <div class="flex-1 bg-gray-700 rounded-full h-2">
-                                <div class="bg-green-500 h-2 rounded-full" style="width: 75%"></div>
-                            </div>
-                            <span class="ml-2">75%</span>
-                        </div>
-                    </div>
-                    <div class="text-green-400">⏱️ Tiempo estimado: 15 minutos restantes</div>
-                </div>
-            </div>
+           
 
             <!-- Pasos de instalación -->
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
@@ -1034,43 +985,39 @@
         <section class="bg-white rounded-lg content-shadow p-8 mb-12">
             <h2 class="text-3xl font-bold fedora-blue mb-6 text-center">Integrantes del Grupo</h2>
             
-            <!-- Miembros del equipo -->
+            <!-- Miembros del equipo CON IMÁGENES -->
             <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
                 <div class="bg-blue-50 p-6 rounded-lg text-center border border-blue-200">
-                    <div class="w-16 h-16 bg-blue-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
-                        </svg>
+                    <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-blue-600">
+                        <img src="abdiel.jpg" alt="Abdiel Abrego" class="w-full h-full object-cover" 
+                             onerror="this.src='https://ui-avatars.com/api/?name=Abdiel+Abrego&background=2563eb&color=fff&size=200'">
                     </div>
                     <h3 class="font-semibold text-blue-800 text-lg">Abdiel Abrego</h3>
                     <p class="text-blue-600 text-sm">Estudiante</p>
                 </div>
 
                 <div class="bg-green-50 p-6 rounded-lg text-center border border-green-200">
-                    <div class="w-16 h-16 bg-green-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
-                        </svg>
+                    <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-green-600">
+                        <img src="nathaly.jpg" alt="Nathaly Bonilla" class="w-full h-full object-cover" 
+                             onerror="this.src='https://ui-avatars.com/api/?name=Nathaly+Bonilla&background=16a34a&color=fff&size=200'">
                     </div>
                     <h3 class="font-semibold text-green-800 text-lg">Nathaly Bonilla</h3>
                     <p class="text-green-600 text-sm">Estudiante</p>
                 </div>
 
                 <div class="bg-purple-50 p-6 rounded-lg text-center border border-purple-200">
-                    <div class="w-16 h-16 bg-purple-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
-                        </svg>
+                    <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-purple-600">
+                        <img src="eimy.jpg" alt="Eimy Félix" class="w-full h-full object-cover" 
+                             onerror="this.src='https://ui-avatars.com/api/?name=Eimy+Felix&background=9333ea&color=fff&size=200'">
                     </div>
                     <h3 class="font-semibold text-purple-800 text-lg">Eimy Félix</h3>
                     <p class="text-purple-600 text-sm">Estudiante</p>
                 </div>
 
                 <div class="bg-orange-50 p-6 rounded-lg text-center border border-orange-200">
-                    <div class="w-16 h-16 bg-orange-600 text-white rounded-full flex items-center justify-center mx-auto mb-4">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z" clip-rule="evenodd"/>
-                        </svg>
+                    <div class="w-24 h-24 mx-auto mb-4 rounded-full overflow-hidden border-4 border-orange-600">
+                        <img src="amanda.jpg" alt="Amanda Green" class="w-full h-full object-cover" 
+                             onerror="this.src='https://ui-avatars.com/api/?name=Amanda+Green&background=ea580c&color=fff&size=200'">
                     </div>
                     <h3 class="font-semibold text-orange-800 text-lg">Amanda Green</h3>
                     <p class="text-orange-600 text-sm">Estudiante</p>
@@ -1102,15 +1049,15 @@
                         </h3>
                         <ul class="space-y-2 text-gray-700">
                             <li><strong>Departamento:</strong> Arquitectura y Redes de Computadoras</li>
-                            <li><strong>Grupo:</strong> 4 – Fedora</li>
-                            <li><strong>Año:</strong> 2024</li>
+                            <li><strong>Grupo:</strong> 1SF132</li>
+                            <li><strong>Año:</strong> 2025</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- Referencias Bibliográficas -->
+<!-- Referencias Bibliográficas -->
         <section class="bg-white rounded-lg content-shadow p-8 mb-12">
             <h2 class="text-3xl font-bold fedora-blue mb-6">Referencias Bibliográficas</h2>
             
@@ -1211,29 +1158,65 @@
                 </div>
             </div>
         </section>
-
-        <!-- Conclusión -->
-        <section class="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-lg p-8 text-center">
-            <h2 class="text-3xl font-bold mb-4">¿Por qué elegir Fedora?</h2>
-            <p class="text-lg opacity-90 max-w-3xl mx-auto mb-6">
-                Fedora representa la perfecta combinación entre innovación tecnológica y estabilidad empresarial. Su compromiso con el código abierto, la seguridad avanzada y las últimas tecnologías lo convierten en la elección ideal para desarrolladores, investigadores y usuarios que buscan lo mejor del ecosistema Linux.
-            </p>
-            <div class="flex flex-wrap justify-center gap-4">
-                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm">🔒 Seguridad Avanzada</span>
-                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm">🚀 Tecnología de Vanguardia</span>
-                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm">🆓 Completamente Gratuito</span>
-                <span class="bg-white bg-opacity-20 px-4 py-2 rounded-full text-sm">👥 Comunidad Activa</span>
-            </div>
-        </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="bg-gray-800 text-white py-8 mt-16">
-        <div class="container mx-auto px-6 text-center">
-            <p class="text-gray-400">
-                © 2024 Blog sobre Fedora Linux. Contenido educativo sobre sistemas operativos de código abierto.
-            </p>
+    <!-- Footer Mejorado -->
+    <footer class="bg-gradient-to-r from-blue-900 to-blue-800 text-white py-12 mt-16">
+        <div class="container mx-auto px-6">
+            <div class="grid md:grid-cols-3 gap-8 mb-8">
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Sobre Fedora</h3>
+                    <p class="text-blue-200 text-sm">
+                        Distribución Linux innovadora patrocinada por Red Hat y construida por la comunidad global.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Enlaces Útiles</h3>
+                    <ul class="space-y-2 text-sm text-blue-200">
+                        <li><a href="https://fedoraproject.org" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">Sitio Oficial</a></li>
+                        <li><a href="https://docs.fedoraproject.org" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">Documentación</a></li>
+                        <li><a href="https://discussion.fedoraproject.org" target="_blank" rel="noopener noreferrer" class="hover:text-white transition">Foros</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h3 class="font-bold text-lg mb-4">Proyecto Académico</h3>
+                    <p class="text-blue-200 text-sm">
+                        Universidad Tecnológica de Panamá<br>
+                        Arquitectura y Redes de Computadoras<br>
+                        Grupo 1SF132
+                    </p>
+                </div>
+            </div>
+            <div class="border-t border-blue-700 pt-6 text-center text-blue-300 text-sm">
+                © 2025 Proyecto Educativo Fedora Linux. Contenido con fines académicos.
+            </div>
         </div>
     </footer>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'98b18ee3d6327485',t:'MTc1OTg4MzcyNS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+
+    <!-- Botón Scroll to Top -->
+    <button id="scrollTop" class="fixed bottom-8 right-8 bg-blue-600 text-white p-4 rounded-full shadow-lg hover:bg-blue-700 transition-all opacity-0 pointer-events-none z-50">
+        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M14.707 12.707a1 1 0 01-1.414 0L10 9.414l-3.293 3.293a1 1 0 01-1.414-1.414l4-4a1 1 0 011.414 0l4 4a1 1 0 010 1.414z" clip-rule="evenodd"/>
+        </svg>
+    </button>
+
+    <script>
+        // Scroll to top functionality
+        const scrollTop = document.getElementById('scrollTop');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                scrollTop.style.opacity = '1';
+                scrollTop.style.pointerEvents = 'auto';
+            } else {
+                scrollTop.style.opacity = '0';
+                scrollTop.style.pointerEvents = 'none';
+            }
+        });
+        
+        scrollTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    </script>
+</body>
 </html>
